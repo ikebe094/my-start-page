@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="c1" width="300" height="300"></canvas>
+    <br>
+    <label for="imhb">画像サイズ 横幅:</label>
+    <input type="number" id="imhb">
+    <label for="imhg">画像サイズ 高さ:</label>
+    <input type="number" id="imhg">
+    <br>
+    <label for="r1">左上 R1:</label>
+    <input type="number" id="r1">
+    <label for="g1">G1:</label>
+    <input type="number" id="g1">
+    <label for="b1">B1:</label>
+    <input type="number" id="b1">
+    <br>
+    <label for="r2">左下 R2:</label>
+    <input type="number" id="r2">
+    <label for="g2">G2:</label>
+    <input type="number" id="g2">
+    <label for="b2">B2:</label>
+    <input type="number" id="b2">
+    <br>
+    <label for="r3">右上 R3:</label>
+    <input type="number" id="r3">
+    <label for="g3">G3:</label>
+    <input type="number" id="g3">
+    <label for="b3">B3:</label>
+    <input type="number" id="b3">
+    <br>
+    <label for="r4">右下 R4:</label>
+    <input type="number" id="r4">
+    <label for="g4">G4:</label>
+    <input type="number" id="g4">
+    <label for="b4">B4:</label>
+    <input type="number" id="b4">
+    <br>
+    <input type="button" value="button" onclick="imgmkksksksksk()">
+    <a id="hiddenLink" download="canvas.png">link</a>
+    <p>自動でダウンロードされない場合、下図を右クリックして保存してください。</p>
+    <img id="canvasImage" src="dummy.png">
+    <script type="text/javascript">
+        function imgmkksksksksk() {
+            var imhb = Number(document.getElementById("imhb").value);
+            var imhg = Number(document.getElementById("imhg").value);
+            var canvas = document.getElementById("c1");
+            canvas.width = imhb;
+            canvas.height = imhg;
+            var ctx = canvas.getContext("2d");
+
+            var dst = ctx.createImageData(canvas.width, canvas.height);
+            var cnhi = canvas.height;
+            var cw = canvas.width;
+            var cw4 = canvas.width * 4;
+
+            var r1 = Number(document.getElementById("r1").value);
+            var g1 = Number(document.getElementById("g1").value);
+            var b1 = Number(document.getElementById("b1").value);
+            var r2 = Number(document.getElementById("r2").value);
+            var g2 = Number(document.getElementById("g2").value);
+            var b2 = Number(document.getElementById("b2").value);
+            var r3 = Number(document.getElementById("r3").value);
+            var g3 = Number(document.getElementById("g3").value);
+            var b3 = Number(document.getElementById("b3").value);
+            var r4 = Number(document.getElementById("r4").value);
+            var g4 = Number(document.getElementById("g4").value);
+            var b4 = Number(document.getElementById("b4").value);
+
+            // 左上
+            for (y = 0; y < cnhi; y += 2) {
+                for (x = 0; x < cw; x += 2) {
+                    dst.data[(cw4 * y) + (x * 4)] = r1;
+                    dst.data[(cw4 * y) + (x * 4) + 1] = g1;
+                    dst.data[(cw4 * y) + (x * 4) + 2] = b1;
+                    dst.data[(cw4 * y) + (x * 4) + 3] = 255;
+                }
+            }
+
+            // 左下
+            for (y = 1; y < cnhi; y += 2) {
+                for (x = 0; x < cw; x += 2) {
+                    dst.data[(cw4 * y) + (x * 4)] = r2;
+                    dst.data[(cw4 * y) + (x * 4) + 1] = g2;
+                    dst.data[(cw4 * y) + (x * 4) + 2] = b2;
+                    dst.data[(cw4 * y) + (x * 4) + 3] = 255;
+                }
+            }
+
+            // 右上
+            for (y = 0; y < cnhi; y += 2) {
+                for (x = 1; x < cw; x += 2) {
+                    dst.data[(cw4 * y) + (x * 4)] = r3;
+                    dst.data[(cw4 * y) + (x * 4) + 1] = g3;
+                    dst.data[(cw4 * y) + (x * 4) + 2] = b3;
+                    dst.data[(cw4 * y) + (x * 4) + 3] = 255;
+                }
+            }
+
+            // 右下
+            for (y = 1; y < cnhi; y += 2) {
+                for (x = 1; x < cw; x += 2) {
+                    dst.data[(cw4 * y) + (x * 4)] = r4;
+                    dst.data[(cw4 * y) + (x * 4) + 1] = g4;
+                    dst.data[(cw4 * y) + (x * 4) + 2] = b4;
+                    dst.data[(cw4 * y) + (x * 4) + 3] = 255;
+                }
+            }
+
+            ctx.putImageData(dst, 0, 0);
+            let link = document.getElementById('hiddenLink')
+            link.href = canvas.toDataURL()
+            document.getElementById('canvasImage').src = canvas.toDataURL()
+            link.click()
+        }
+    </script>
+</body>
+
+</html>
