@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .whole {
+            height: 100%;
+        }
+
+        html {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="whole">
+    <h1 id="h1e" style="filter: drop-shadow(3px 3px 0.2rem #adadad);">開始するには画面中央をクリックします</h1>
+    <script>
+        let cnti = 0;
+        let gval = 0;
+        let bval = 0;
+        let elmh1 = document.getElementById("h1e");
+
+        function setBgCol() {
+            rval = 85 * (cnti % 4);
+            colortxt = "rgb(" + rval + ", " + gval + ", " + bval + ")";
+            document.getElementsByTagName("body")[0].style.backgroundColor = colortxt;
+            h1e.textContent = colortxt;
+            if (cnti % 4 === 3) {
+                if (gval >= 255) {
+                    gval = 0;
+                } else if (gval < 255) {
+                    gval += 85;
+                }
+            }
+            if (cnti % 16 === 15) {
+                bval += 85;
+            }
+            cnti += 1;
+        }
+
+        document.body.onclick = function (event) {
+            //console.log(event);
+            setBgCol();
+        }
+    </script>
+</body>
+
+</html>
