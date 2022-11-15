@@ -7,15 +7,22 @@
 </head>
 
 <body>
-    <h1>HTML test</h1>
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-    </div>
+    <h1>password test</h1>
+    <p>パスワードを自動生成し「確認」ボタンを押したらその下に表示されるはず</p>
     <div>
         <label for="pass">Password:</label>
         <input type="password" id="pass" name="password">
     </div>
+    <div>
+        <p id="viewp">★☆★☆★☆ここに表示される★☆★☆★☆</p>
+    </div>
+    <script>
+        function viewpass(){
+            let passelm = document.getElementById("pass");
+            document.getElementById.textContent=passelm.value;
+            console.log(passelm.value);
+        }
+    </script>
 </body>
 
 </html>
