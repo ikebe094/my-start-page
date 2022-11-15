@@ -14,12 +14,13 @@
         <input type="password" id="pass" name="password">
     </div>
     <div>
+        <button type="button" onclick="viewpass()">確認</button>
         <p id="viewp">★☆★☆★☆ここに表示される★☆★☆★☆</p>
     </div>
     <script>
         function viewpass(){
             let passelm = document.getElementById("pass");
-            document.getElementById.textContent=passelm.value;
+            document.getElementById("viewp").textContent=passelm.value;
             console.log(passelm.value);
         }
     </script>
